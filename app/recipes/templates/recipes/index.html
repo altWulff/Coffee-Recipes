@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title>Band Listing</title>
+  </head>
+  <body>
+    <h1>All Recipes</h1>
+    <ul>
+    {% for recipe in latest_recipes %}
+        <li><a href="{% url 'detail' recipe.id %}">{{ recipe.title }}</a></li>
+    {% endfor %}
+    </ul>
+  </body>
+</html>
