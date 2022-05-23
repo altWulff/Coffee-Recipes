@@ -1,11 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from django.template import loader
 from .models import RecipeModel
+
 
 def index(request):
     latest_recipes = RecipeModel.objects.order_by('title')[:5]
-    output = ', '.join([r.desc for r in latest_recipes])
-    return HttpResponse(output)
-    
-def details(request, recipe_id):
-    return HttpResponse('Details')
+    context = {'latest_recipes': latest_recipes}
+    return render(request, 'recipes/index.html', context)
+
+
+def detail(request, recipes_id):
+    recipe = get_object_or_404(RecipeModel, pk=recipes_id)
+    return render(request, 'recipes/detail.html', {'recipe': recipe})
