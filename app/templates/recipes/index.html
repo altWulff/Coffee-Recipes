@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>Band Listing</title>
+  </head>
+  <body>
+    <h1>All Bands</h1>
+    <ul>
+    {% for recipe in recipes %}
+      <li>
+        <h2>{{ recipe.title }}</h2>
+      </li>
+    {% endfor %}
+    </ul>
+  </body>
+</html>
